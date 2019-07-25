@@ -1,3 +1,4 @@
+// Package bubblesort provides a way of sorting a slice using the bubblesort algorithm
 package bubblesort
 
 // Exec sorts a slice of integers using the bubblesort algorithm
