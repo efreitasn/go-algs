@@ -27,10 +27,10 @@ func TestExec(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("%v", test.in), func(t *testing.T) {
-			result := Exec(test.in)
+			Exec(test.in)
 
-			if !reflect.DeepEqual(result, test.out) {
-				t.Errorf("got %v, want %v", result, test.out)
+			if !reflect.DeepEqual(test.in, test.out) {
+				t.Errorf("got %v, want %v", test.in, test.out)
 			}
 		})
 	}
