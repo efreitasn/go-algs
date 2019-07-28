@@ -1,4 +1,4 @@
-// Package mergesort provides a way of sorting a slice using the merge sort algorithm
+// Package mergesort provides a way of sorting a slice using the merge sort algorithm.
 package mergesort
 
 func divide(s []int) (left, right []int) {
@@ -33,7 +33,7 @@ func merge(left, right []int) []int {
 	return r
 }
 
-// Exec sorts a slice of integers in increasing order using the merge sort algorithm
+// Exec sorts a slice of ints in increasing order using the merge sort algorithm.
 func Exec(s []int) []int {
 	if len(s) == 1 {
 		return s
