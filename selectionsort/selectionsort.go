@@ -1,7 +1,7 @@
-// Package selectionsort provides a way of sorting a slice using the selection sort algorithm
+// Package selectionsort provides a way of sorting a slice using the selection sort algorithm.
 package selectionsort
 
-// Exec sorts a slice of integers in increasing order using the selection sort algorithm
+// Exec sorts a slice of ints in increasing order using the selection sort algorithm.
 func Exec(s []int) {
 	for currentIndex := 0; currentIndex < len(s); currentIndex++ {
 		minIndex := currentIndex
