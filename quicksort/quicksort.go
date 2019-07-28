@@ -1,7 +1,7 @@
-// Package quicksort provides a way of sorting a slice using the quick sort algorithm
+// Package quicksort provides a way of sorting a slice using the quick sort algorithm.
 package quicksort
 
-// Exec sorts a slice of integers in increasing order using the quick sort algorithm
+// Exec sorts a slice of ints in increasing order using the quick sort algorithm.
 func Exec(s []int) {
 	pivotIndex := len(s) - 1
 	currentIndex := 0
