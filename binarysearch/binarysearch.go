@@ -1,7 +1,7 @@
-// Package binarysearch provides a way of finding a value in an ordered slice using the binary search algorithm
+// Package binarysearch provides a way of finding a value in an ordered slice using the binary search algorithm.
 package binarysearch
 
-// Exec finds a value in a slice of integers sorted in increasing order using the binary search algorithm
+// Exec finds a value in a slice of ints sorted in increasing order using the binary search algorithm.
 func Exec(s []int, value int) (index int, found bool) {
 	var start, end int
 	halfIndex := len(s) / 2
