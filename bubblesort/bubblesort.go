@@ -1,7 +1,7 @@
-// Package bubblesort provides a way of sorting a slice using the bubble sort algorithm
+// Package bubblesort provides a way of sorting a slice using the bubble sort algorithm.
 package bubblesort
 
-// Exec sorts a slice of integers in increasing order using the bubble sort algorithm
+// Exec sorts a slice of ints in increasing order using the bubble sort algorithm.
 func Exec(s []int) {
 	swap := true
 
