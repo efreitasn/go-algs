@@ -6,8 +6,8 @@ import (
 	"github.com/efreitasn/go-datas/stack"
 )
 
-// ExecPreOrder performs a traverse using the depth-first search algorithm with a pre-order strategy in a graph of ints.
-func ExecPreOrder(g *graph.Graph, startVertex int, cb func(v int) bool) {
+// GraphPreOrder performs a traverse using the depth-first search algorithm with a pre-order strategy in a graph of ints.
+func GraphPreOrder(g *graph.Graph, startVertex int, cb func(v int) bool) {
 	if !g.HasVertex(startVertex) {
 		return
 	}

@@ -7,7 +7,7 @@ import (
 	"github.com/efreitasn/go-datas/graph"
 )
 
-func TestExecPreOrder(t *testing.T) {
+func TestGraphPreOrder(t *testing.T) {
 	g := graph.New(false)
 	vals := []int{}
 
@@ -40,7 +40,7 @@ func TestExecPreOrder(t *testing.T) {
 	g.AddEdge(9, 10)
 	g.AddEdge(9, 11)
 
-	ExecPreOrder(g, 1, func(v int) bool {
+	GraphPreOrder(g, 1, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
@@ -67,7 +67,7 @@ func TestExecPreOrder(t *testing.T) {
 
 	vals = []int{}
 
-	ExecPreOrder(g, 1, func(v int) bool {
+	GraphPreOrder(g, 1, func(v int) bool {
 		if v == 6 {
 			return false
 		}
