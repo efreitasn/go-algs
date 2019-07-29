@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/efreitasn/go-datas/graph"
+	"github.com/efreitasn/go-datas/tree"
 )
 
 func TestGraphPreOrder(t *testing.T) {
@@ -68,6 +69,76 @@ func TestGraphPreOrder(t *testing.T) {
 	vals = []int{}
 
 	GraphPreOrder(g, 1, func(v int) bool {
+		if v == 6 {
+			return false
+		}
+
+		vals = append(vals, v)
+
+		return true
+	})
+
+	expectedVals = []int{
+		1,
+		2,
+		3,
+		4,
+		5,
+	}
+
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
+	}
+}
+
+func TestTreePreOrder(t *testing.T) {
+	tr := tree.New(1)
+	vals := []int{}
+
+	tr.AddNode(1, 2)
+	tr.AddNode(1, 7)
+	tr.AddNode(1, 8)
+
+	tr.AddNode(2, 3)
+	tr.AddNode(2, 6)
+
+	tr.AddNode(3, 4)
+	tr.AddNode(3, 5)
+
+	tr.AddNode(8, 9)
+	tr.AddNode(8, 12)
+
+	tr.AddNode(9, 10)
+	tr.AddNode(9, 11)
+
+	TreePreOrder(tr, 1, func(v int) bool {
+		vals = append(vals, v)
+
+		return true
+	})
+
+	expectedVals := []int{
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10,
+		11,
+		12,
+	}
+
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
+	}
+
+	vals = []int{}
+
+	TreePreOrder(tr, 1, func(v int) bool {
 		if v == 6 {
 			return false
 		}
