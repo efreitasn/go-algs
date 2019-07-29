@@ -2,64 +2,161 @@
 package dfs
 
 import (
-	"github.com/efreitasn/go-datas/graph"
-	"github.com/efreitasn/go-datas/stack"
-	"github.com/efreitasn/go-datas/tree"
+	"github.com/efreitasn/go-datas/binarysearchtree"
 )
 
-// GraphPreOrder performs a traverse using the depth-first search algorithm with a pre-order strategy in a graph of ints.
-func GraphPreOrder(g *graph.Graph, startVertex int, cb func(v int) bool) {
-	if !g.HasVertex(startVertex) {
+// BinarySearchTreeNLR performs a traverse using the depth-first search algorithm with a pre-order strategy in a binary search tree of ints.
+func BinarySearchTreeNLR(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+	if bts.Size() == 0 {
 		return
 	}
 
-	s := stack.New(startVertex)
-	visited := map[int]bool{
-		startVertex: true,
-	}
-
-	for s.Size() != 0 {
-		v, _ := s.Pop()
-
-		r := cb(v)
-
-		if !r {
-			break
-		}
-
-		adjVertices, _ := g.AdjacentVertices(v)
-
-		adjVertices.Traverse(false, func(adjV int) {
-			if !visited[adjV] {
-				s.Push(adjV)
-
-				visited[adjV] = true
-			}
-		})
-	}
+	binarySearchTreeNLRRecursive(bts.Root(), cb)
 }
 
-// TreePreOrder performs a traverse using the depth-first search algorithm with a pre-order strategy in a tree of ints.
-func TreePreOrder(tr *tree.Tree, startNode int, cb func(v int) bool) {
-	if !tr.HasNode(startNode) {
+func binarySearchTreeNLRRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+	if n == nil {
+		return true
+	}
+
+	valR := cb(n.Value())
+
+	if !valR {
+		return false
+	}
+
+	if n.Left() != nil {
+		leftR := binarySearchTreeNLRRecursive(n.Left(), cb)
+
+		if !leftR {
+			return false
+		}
+	}
+
+	if n.Right() != nil {
+		rightR := binarySearchTreeNLRRecursive(n.Right(), cb)
+
+		if !rightR {
+			return false
+		}
+	}
+
+	return true
+}
+
+// BinarySearchTreeLNR performs a traverse using the depth-first search algorithm with an in-order strategy in a binary search tree of ints.
+func BinarySearchTreeLNR(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+	if bts.Size() == 0 {
 		return
 	}
 
-	s := stack.New(startNode)
+	binarySearchTreeLNRRecursive(bts.Root(), cb)
+}
 
-	for s.Size() != 0 {
-		v, _ := s.Pop()
-
-		r := cb(v)
-
-		if !r {
-			break
-		}
-
-		children, _ := tr.NodeChildren(v)
-
-		children.Traverse(false, func(child int) {
-			s.Push(child)
-		})
+func binarySearchTreeLNRRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+	if n == nil {
+		return true
 	}
+
+	if n.Left() != nil {
+		leftR := binarySearchTreeLNRRecursive(n.Left(), cb)
+
+		if !leftR {
+			return false
+		}
+	}
+
+	valR := cb(n.Value())
+
+	if !valR {
+		return false
+	}
+
+	if n.Right() != nil {
+		rightR := binarySearchTreeLNRRecursive(n.Right(), cb)
+
+		if !rightR {
+			return false
+		}
+	}
+
+	return true
+}
+
+// BinarySearchTreeRNL performs a traverse using the depth-first search algorithm with an out-order strategy in a binary search tree of ints.
+func BinarySearchTreeRNL(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+	if bts.Size() == 0 {
+		return
+	}
+
+	binarySearchTreeRNLRecursive(bts.Root(), cb)
+}
+
+func binarySearchTreeRNLRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+	if n == nil {
+		return true
+	}
+
+	if n.Right() != nil {
+		rightR := binarySearchTreeRNLRecursive(n.Right(), cb)
+
+		if !rightR {
+			return false
+		}
+	}
+
+	valR := cb(n.Value())
+
+	if !valR {
+		return false
+	}
+
+	if n.Left() != nil {
+		leftR := binarySearchTreeRNLRecursive(n.Left(), cb)
+
+		if !leftR {
+			return false
+		}
+	}
+
+	return true
+}
+
+// BinarySearchTreeLRN performs a traverse using the depth-first search algorithm with a post-order strategy in a binary search tree of ints.
+func BinarySearchTreeLRN(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+	if bts.Size() == 0 {
+		return
+	}
+
+	binarySearchTreeLRNRecursive(bts.Root(), cb)
+}
+
+func binarySearchTreeLRNRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+	if n == nil {
+		return true
+	}
+
+	if n.Left() != nil {
+		leftR := binarySearchTreeLRNRecursive(n.Left(), cb)
+
+		if !leftR {
+			return false
+		}
+	}
+
+	if n.Right() != nil {
+		rightR := binarySearchTreeLRNRecursive(n.Right(), cb)
+
+		if !rightR {
+			return false
+		}
+	}
+
+	valR := cb(n.Value())
+
+	if !valR {
+		return false
+	}
+
+	return true
 }

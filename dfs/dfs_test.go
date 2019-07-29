@@ -4,72 +4,51 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/efreitasn/go-datas/graph"
-	"github.com/efreitasn/go-datas/tree"
+	"github.com/efreitasn/go-datas/binarysearchtree"
 )
 
-func TestGraphPreOrder(t *testing.T) {
-	g := graph.New(false)
+func TestBinarySearchTreeNLR(t *testing.T) {
+	bts := binarysearchtree.New()
+
+	bts.Insert(100)
+	bts.Insert(90)
+	bts.Insert(80)
+	bts.Insert(95)
+	bts.Insert(120)
+	bts.Insert(110)
+	bts.Insert(130)
+
 	vals := []int{}
+	expectedVals := []int{
+		100,
+		90,
+		80,
+		95,
+		120,
+		110,
+		130,
+	}
 
-	g.AddVertex(1)
-	g.AddVertex(2)
-	g.AddVertex(3)
-	g.AddVertex(4)
-	g.AddVertex(5)
-	g.AddVertex(6)
-	g.AddVertex(7)
-	g.AddVertex(8)
-	g.AddVertex(9)
-	g.AddVertex(10)
-	g.AddVertex(11)
-	g.AddVertex(12)
-
-	g.AddEdge(1, 2)
-	g.AddEdge(1, 7)
-	g.AddEdge(1, 8)
-
-	g.AddEdge(2, 3)
-	g.AddEdge(2, 6)
-
-	g.AddEdge(3, 4)
-	g.AddEdge(3, 5)
-
-	g.AddEdge(8, 9)
-	g.AddEdge(8, 12)
-
-	g.AddEdge(9, 10)
-	g.AddEdge(9, 11)
-
-	GraphPreOrder(g, 1, func(v int) bool {
+	BinarySearchTreeNLR(bts, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
 	})
-
-	expectedVals := []int{
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-	}
 
 	if !reflect.DeepEqual(vals, expectedVals) {
 		t.Errorf("got %v, want %v", vals, expectedVals)
 	}
 
 	vals = []int{}
+	expectedVals = []int{
+		100,
+		90,
+		80,
+		95,
+	}
 
-	GraphPreOrder(g, 1, func(v int) bool {
-		if v == 6 {
+	BinarySearchTreeNLR(bts, func(v int) bool {
+		if v == 120 {
 			return false
 		}
 
@@ -78,68 +57,53 @@ func TestGraphPreOrder(t *testing.T) {
 		return true
 	})
 
-	expectedVals = []int{
-		1,
-		2,
-		3,
-		4,
-		5,
-	}
-
 	if !reflect.DeepEqual(vals, expectedVals) {
 		t.Errorf("got %v, want %v", vals, expectedVals)
 	}
+
 }
 
-func TestTreePreOrder(t *testing.T) {
-	tr := tree.New(1)
+func TestBinarySearchTreeRNL(t *testing.T) {
+	bts := binarysearchtree.New()
+
+	bts.Insert(100)
+	bts.Insert(90)
+	bts.Insert(80)
+	bts.Insert(95)
+	bts.Insert(120)
+	bts.Insert(110)
+	bts.Insert(130)
+
 	vals := []int{}
+	expectedVals := []int{
+		130,
+		120,
+		110,
+		100,
+		95,
+		90,
+		80,
+	}
 
-	tr.AddNode(1, 2)
-	tr.AddNode(1, 7)
-	tr.AddNode(1, 8)
-
-	tr.AddNode(2, 3)
-	tr.AddNode(2, 6)
-
-	tr.AddNode(3, 4)
-	tr.AddNode(3, 5)
-
-	tr.AddNode(8, 9)
-	tr.AddNode(8, 12)
-
-	tr.AddNode(9, 10)
-	tr.AddNode(9, 11)
-
-	TreePreOrder(tr, 1, func(v int) bool {
+	BinarySearchTreeRNL(bts, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
 	})
-
-	expectedVals := []int{
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-	}
 
 	if !reflect.DeepEqual(vals, expectedVals) {
 		t.Errorf("got %v, want %v", vals, expectedVals)
 	}
 
 	vals = []int{}
+	expectedVals = []int{
+		130,
+		120,
+		110,
+	}
 
-	TreePreOrder(tr, 1, func(v int) bool {
-		if v == 6 {
+	BinarySearchTreeRNL(bts, func(v int) bool {
+		if v == 100 {
 			return false
 		}
 
@@ -148,13 +112,115 @@ func TestTreePreOrder(t *testing.T) {
 		return true
 	})
 
-	expectedVals = []int{
-		1,
-		2,
-		3,
-		4,
-		5,
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
 	}
+
+}
+
+func TestBinarySearchTreeLNR(t *testing.T) {
+	bts := binarysearchtree.New()
+
+	bts.Insert(100)
+	bts.Insert(90)
+	bts.Insert(80)
+	bts.Insert(95)
+	bts.Insert(120)
+	bts.Insert(110)
+	bts.Insert(130)
+
+	vals := []int{}
+	expectedVals := []int{
+		80,
+		90,
+		95,
+		100,
+		110,
+		120,
+		130,
+	}
+
+	BinarySearchTreeLNR(bts, func(v int) bool {
+		vals = append(vals, v)
+
+		return true
+	})
+
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
+	}
+
+	vals = []int{}
+	expectedVals = []int{
+		80,
+		90,
+		95,
+	}
+
+	BinarySearchTreeLNR(bts, func(v int) bool {
+		if v == 100 {
+			return false
+		}
+
+		vals = append(vals, v)
+
+		return true
+	})
+
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
+	}
+
+}
+
+func TestBinarySearchTreeLRN(t *testing.T) {
+	bts := binarysearchtree.New()
+
+	bts.Insert(100)
+	bts.Insert(90)
+	bts.Insert(80)
+	bts.Insert(95)
+	bts.Insert(120)
+	bts.Insert(110)
+	bts.Insert(130)
+
+	vals := []int{}
+	expectedVals := []int{
+		80,
+		95,
+		90,
+		110,
+		130,
+		120,
+		100,
+	}
+
+	BinarySearchTreeLRN(bts, func(v int) bool {
+		vals = append(vals, v)
+
+		return true
+	})
+
+	if !reflect.DeepEqual(vals, expectedVals) {
+		t.Errorf("got %v, want %v", vals, expectedVals)
+	}
+
+	vals = []int{}
+	expectedVals = []int{
+		80,
+		95,
+		90,
+	}
+
+	BinarySearchTreeLRN(bts, func(v int) bool {
+		if v == 110 {
+			return false
+		}
+
+		vals = append(vals, v)
+
+		return true
+	})
 
 	if !reflect.DeepEqual(vals, expectedVals) {
 		t.Errorf("got %v, want %v", vals, expectedVals)
