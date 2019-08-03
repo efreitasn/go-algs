@@ -5,21 +5,14 @@ package insertionsort
 func Exec(s []int) {
 	for currentIndex := 1; currentIndex < len(s); currentIndex++ {
 		currentValue := s[currentIndex]
-		iToPut := 0
+		i := currentIndex - 1
 
-		for i := currentIndex - 1; i >= 0; i-- {
-			if currentValue > s[i] {
-				iToPut = i + 1
+		for i >= 0 && s[i] > currentValue {
+			s[i+1] = s[i]
 
-				break
-			}
+			i--
 		}
 
-		// Swap
-		for m := currentIndex - 1; m >= iToPut; m-- {
-			s[m+1] = s[m]
-		}
-
-		s[iToPut] = currentValue
+		s[i+1] = currentValue
 	}
 }
