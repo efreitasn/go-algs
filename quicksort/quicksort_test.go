@@ -35,3 +35,16 @@ func TestExec(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkExec(b *testing.B) {
+	size := int(1e5)
+	s := make([]int, size)
+
+	for i := size - 1; i >= 0; i-- {
+		s[i] = i
+	}
+
+	for i := 0; i < b.N; i++ {
+		Exec(s)
+	}
+}
