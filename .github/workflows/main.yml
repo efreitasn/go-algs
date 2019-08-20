@@ -9,21 +9,21 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
 
-    - name: Downnload go@1.12.9
-      uses: actions/setup-go
+    - name: Downnload go@v1.12.9
+      uses: actions/setup-go@v1
       with:
         go-version: 1.12.9
         
     - name: Checkout repo
-      uses: actions/checkout
+      uses: actions/checkout@v1
       
     - name: Download deps
       run: go mod download
-      
-    - name: Build
-      run: go build .
+
+    - name: Test
+      run: go test ./...
