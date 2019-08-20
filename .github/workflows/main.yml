@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Downnload go@1.12.9
+      uses: actions/setup-go
+      with:
+        go-version: 1.12.9
+        
+    - name: Checkout repo
+      uses: actions/checkout
+      
+    - name: Download deps
+      run: go mod download
+      
+    - name: Build
+      run: go build .
