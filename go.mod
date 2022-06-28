@@ -1,5 +1,5 @@
 module github.com/efreitasn/go-algs
 
-go 1.12
+go 1.18
 
 require github.com/efreitasn/go-datas v0.0.1
