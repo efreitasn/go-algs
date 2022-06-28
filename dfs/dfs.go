@@ -3,10 +3,11 @@ package dfs
 
 import (
 	"github.com/efreitasn/go-datas/binarysearchtree"
+	"golang.org/x/exp/constraints"
 )
 
-// BinarySearchTreeNLR performs a traverse using the depth-first search algorithm with a pre-order strategy in a binary search tree of ints.
-func BinarySearchTreeNLR(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+// BinarySearchTreeNLR performs a traverse using the depth-first search algorithm with a pre-order strategy in a binary search tree of an ordered type T.
+func BinarySearchTreeNLR[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
 	if bts.Size() == 0 {
 		return
 	}
@@ -14,7 +15,7 @@ func BinarySearchTreeNLR(bts *binarysearchtree.BinarySearchTree, cb func(v int) 
 	binarySearchTreeNLRRecursive(bts.Root(), cb)
 }
 
-func binarySearchTreeNLRRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+func binarySearchTreeNLRRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
 	if n == nil {
 		return true
 	}
@@ -44,8 +45,8 @@ func binarySearchTreeNLRRecursive(n *binarysearchtree.Node, cb func(v int) bool)
 	return true
 }
 
-// BinarySearchTreeLNR performs a traverse using the depth-first search algorithm with an in-order strategy in a binary search tree of ints.
-func BinarySearchTreeLNR(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+// BinarySearchTreeLNR performs a traverse using the depth-first search algorithm with an in-order strategy in a binary search tree of an ordered type T.
+func BinarySearchTreeLNR[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
 	if bts.Size() == 0 {
 		return
 	}
@@ -53,7 +54,7 @@ func BinarySearchTreeLNR(bts *binarysearchtree.BinarySearchTree, cb func(v int) 
 	binarySearchTreeLNRRecursive(bts.Root(), cb)
 }
 
-func binarySearchTreeLNRRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+func binarySearchTreeLNRRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
 	if n == nil {
 		return true
 	}
@@ -83,8 +84,8 @@ func binarySearchTreeLNRRecursive(n *binarysearchtree.Node, cb func(v int) bool)
 	return true
 }
 
-// BinarySearchTreeRNL performs a traverse using the depth-first search algorithm with an out-order strategy in a binary search tree of ints.
-func BinarySearchTreeRNL(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+// BinarySearchTreeRNL performs a traverse using the depth-first search algorithm with an out-order strategy in a binary search tree of an ordered type T.
+func BinarySearchTreeRNL[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
 	if bts.Size() == 0 {
 		return
 	}
@@ -92,7 +93,7 @@ func BinarySearchTreeRNL(bts *binarysearchtree.BinarySearchTree, cb func(v int) 
 	binarySearchTreeRNLRecursive(bts.Root(), cb)
 }
 
-func binarySearchTreeRNLRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+func binarySearchTreeRNLRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
 	if n == nil {
 		return true
 	}
@@ -122,8 +123,8 @@ func binarySearchTreeRNLRecursive(n *binarysearchtree.Node, cb func(v int) bool)
 	return true
 }
 
-// BinarySearchTreeLRN performs a traverse using the depth-first search algorithm with a post-order strategy in a binary search tree of ints.
-func BinarySearchTreeLRN(bts *binarysearchtree.BinarySearchTree, cb func(v int) bool) {
+// BinarySearchTreeLRN performs a traverse using the depth-first search algorithm with a post-order strategy in a binary search tree of an ordered type T.
+func BinarySearchTreeLRN[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
 	if bts.Size() == 0 {
 		return
 	}
@@ -131,7 +132,7 @@ func BinarySearchTreeLRN(bts *binarysearchtree.BinarySearchTree, cb func(v int) 
 	binarySearchTreeLRNRecursive(bts.Root(), cb)
 }
 
-func binarySearchTreeLRNRecursive(n *binarysearchtree.Node, cb func(v int) bool) bool {
+func binarySearchTreeLRNRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
 	if n == nil {
 		return true
 	}

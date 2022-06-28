@@ -8,7 +8,7 @@ import (
 )
 
 func TestBinarySearchTreeNLR(t *testing.T) {
-	bts := binarysearchtree.New()
+	bts := binarysearchtree.New[int]()
 
 	bts.Insert(100)
 	bts.Insert(90)
@@ -64,7 +64,7 @@ func TestBinarySearchTreeNLR(t *testing.T) {
 }
 
 func TestBinarySearchTreeRNL(t *testing.T) {
-	bts := binarysearchtree.New()
+	bts := binarysearchtree.New[int]()
 
 	bts.Insert(100)
 	bts.Insert(90)
@@ -119,7 +119,7 @@ func TestBinarySearchTreeRNL(t *testing.T) {
 }
 
 func TestBinarySearchTreeLNR(t *testing.T) {
-	bts := binarysearchtree.New()
+	bts := binarysearchtree.New[int]()
 
 	bts.Insert(100)
 	bts.Insert(90)
@@ -174,7 +174,7 @@ func TestBinarySearchTreeLNR(t *testing.T) {
 }
 
 func TestBinarySearchTreeLRN(t *testing.T) {
-	bts := binarysearchtree.New()
+	bts := binarysearchtree.New[int]()
 
 	bts.Insert(100)
 	bts.Insert(90)

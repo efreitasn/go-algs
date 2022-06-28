@@ -7,13 +7,13 @@ import (
 )
 
 // Graph performs a search in a graph using breadth-first-search.
-func Graph(g *graph.Graph, startVertex int, cb func(v int) bool) {
+func Graph[T comparable](g *graph.Graph[T], startVertex T, cb func(v T) bool) {
 	if !g.HasVertex(startVertex) {
 		return
 	}
 
-	q := queue.New()
-	visited := map[int]bool{}
+	q := queue.New[T]()
+	visited := map[T]bool{}
 
 	q.Enqueue(startVertex)
 	visited[startVertex] = true
@@ -31,12 +31,14 @@ func Graph(g *graph.Graph, startVertex int, cb func(v int) bool) {
 
 		adjVertices, _ := g.AdjacentVertices(v)
 
-		adjVertices.Traverse(true, func(adjV int) {
+		adjVertices.Traverse(true, func(adjV T) bool {
 			if !visited[adjV] {
 				visited[adjV] = true
 
 				q.Enqueue(adjV)
 			}
+
+			return true
 		})
 	}
 }

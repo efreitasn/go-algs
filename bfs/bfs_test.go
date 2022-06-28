@@ -9,7 +9,7 @@ import (
 
 func TestGraph(t *testing.T) {
 	// Directed graph
-	g := graph.New(true)
+	g := graph.New[int](true)
 	vals := []int{}
 
 	g.AddVertex(10)
@@ -38,7 +38,7 @@ func TestGraph(t *testing.T) {
 		t.Errorf("got %v, want %v", vals, expectedVals)
 	}
 
-	g = graph.New(false)
+	g = graph.New[int](false)
 	vals = []int{}
 
 	g.AddVertex(10)
