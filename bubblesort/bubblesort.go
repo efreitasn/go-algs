@@ -1,8 +1,10 @@
 // Package bubblesort provides a way of sorting a slice using the bubble sort algorithm.
 package bubblesort
 
-// Exec sorts a slice of ints in increasing order using the bubble sort algorithm.
-func Exec(s []int) {
+import "golang.org/x/exp/constraints"
+
+// Exec sorts a slice of a comparable type T in increasing order using the bubble sort algorithm.
+func Exec[T constraints.Ordered](s []T) {
 	swap := true
 
 	for swap {
