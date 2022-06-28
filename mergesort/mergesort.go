@@ -1,14 +1,16 @@
 // Package mergesort provides a way of sorting a slice using the merge sort algorithm.
 package mergesort
 
-func divide(s []int) (left, right []int) {
+import "golang.org/x/exp/constraints"
+
+func divide[T constraints.Ordered](s []T) (left, right []T) {
 	half := len(s) / 2
 
-	return s[0:half], s[half:len(s)]
+	return s[0:half], s[half:]
 }
 
-func merge(left, right []int) []int {
-	var r []int
+func merge[T constraints.Ordered](left, right []T) []T {
+	var r []T
 	var lIndex int
 	var rIndex int
 
@@ -25,16 +27,16 @@ func merge(left, right []int) []int {
 	}
 
 	if lIndex != len(left) {
-		r = append(r, left[lIndex:len(left)]...)
+		r = append(r, left[lIndex:]...)
 	} else if rIndex != len(right) {
-		r = append(r, right[rIndex:len(right)]...)
+		r = append(r, right[rIndex:]...)
 	}
 
 	return r
 }
 
-// Exec sorts a slice of ints in increasing order using the merge sort algorithm.
-func Exec(s []int) []int {
+// Exec sorts a slice of an ordered type T in increasing order using the merge sort algorithm.
+func Exec[T constraints.Ordered](s []T) []T {
 	if len(s) == 1 {
 		return s
 	}
