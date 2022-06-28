@@ -1,8 +1,10 @@
 // Package quicksort provides a way of sorting a slice using the quick sort algorithm.
 package quicksort
 
-// Exec sorts a slice of ints in increasing order using the quick sort algorithm.
-func Exec(s []int) {
+import "golang.org/x/exp/constraints"
+
+// Exec sorts a slice of an ordered type T in increasing order using the quick sort algorithm.
+func Exec[T constraints.Ordered](s []T) {
 	pivotIndex := len(s) - 1
 	currentIndex := 0
 
@@ -24,6 +26,6 @@ func Exec(s []int) {
 	}
 
 	if pivotIndex < (len(s) - 2) {
-		Exec(s[(pivotIndex + 1):len(s)])
+		Exec(s[(pivotIndex + 1):])
 	}
 }
