@@ -1,8 +1,10 @@
 // Package binarysearch provides a way of finding a value in an ordered slice using the binary search algorithm.
 package binarysearch
 
-// Exec finds a value in a slice of ints sorted in increasing order using the binary search algorithm.
-func Exec(s []int, value int) (index int, found bool) {
+import "golang.org/x/exp/constraints"
+
+// Exec finds a value in a slice of a comparable type T sorted in increasing order using the binary search algorithm.
+func Exec[T constraints.Ordered](s []T, value T) (index int, found bool) {
 	var start, end int
 	halfIndex := len(s) / 2
 
