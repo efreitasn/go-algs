@@ -155,9 +155,5 @@ func binarySearchTreeLRNRecursive[T constraints.Ordered](n *binarysearchtree.Nod
 
 	valR := cb(n.Value())
 
-	if !valR {
-		return false
-	}
-
-	return true
+	return valR
 }
