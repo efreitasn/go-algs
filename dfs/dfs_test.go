@@ -8,15 +8,15 @@ import (
 )
 
 func TestBinarySearchTreeNLR(t *testing.T) {
-	bts := binarysearchtree.New[int]()
+	bst := binarysearchtree.New[int]()
 
-	bts.Insert(100)
-	bts.Insert(90)
-	bts.Insert(80)
-	bts.Insert(95)
-	bts.Insert(120)
-	bts.Insert(110)
-	bts.Insert(130)
+	bst.Insert(100)
+	bst.Insert(90)
+	bst.Insert(80)
+	bst.Insert(95)
+	bst.Insert(120)
+	bst.Insert(110)
+	bst.Insert(130)
 
 	vals := []int{}
 	expectedVals := []int{
@@ -29,7 +29,7 @@ func TestBinarySearchTreeNLR(t *testing.T) {
 		130,
 	}
 
-	BinarySearchTreeNLR(bts, func(v int) bool {
+	BinarySearchTreeNLR(bst, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
@@ -47,7 +47,7 @@ func TestBinarySearchTreeNLR(t *testing.T) {
 		95,
 	}
 
-	BinarySearchTreeNLR(bts, func(v int) bool {
+	BinarySearchTreeNLR(bst, func(v int) bool {
 		if v == 120 {
 			return false
 		}
@@ -64,15 +64,15 @@ func TestBinarySearchTreeNLR(t *testing.T) {
 }
 
 func TestBinarySearchTreeRNL(t *testing.T) {
-	bts := binarysearchtree.New[int]()
+	bst := binarysearchtree.New[int]()
 
-	bts.Insert(100)
-	bts.Insert(90)
-	bts.Insert(80)
-	bts.Insert(95)
-	bts.Insert(120)
-	bts.Insert(110)
-	bts.Insert(130)
+	bst.Insert(100)
+	bst.Insert(90)
+	bst.Insert(80)
+	bst.Insert(95)
+	bst.Insert(120)
+	bst.Insert(110)
+	bst.Insert(130)
 
 	vals := []int{}
 	expectedVals := []int{
@@ -85,7 +85,7 @@ func TestBinarySearchTreeRNL(t *testing.T) {
 		80,
 	}
 
-	BinarySearchTreeRNL(bts, func(v int) bool {
+	BinarySearchTreeRNL(bst, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
@@ -102,7 +102,7 @@ func TestBinarySearchTreeRNL(t *testing.T) {
 		110,
 	}
 
-	BinarySearchTreeRNL(bts, func(v int) bool {
+	BinarySearchTreeRNL(bst, func(v int) bool {
 		if v == 100 {
 			return false
 		}
@@ -119,15 +119,15 @@ func TestBinarySearchTreeRNL(t *testing.T) {
 }
 
 func TestBinarySearchTreeLNR(t *testing.T) {
-	bts := binarysearchtree.New[int]()
+	bst := binarysearchtree.New[int]()
 
-	bts.Insert(100)
-	bts.Insert(90)
-	bts.Insert(80)
-	bts.Insert(95)
-	bts.Insert(120)
-	bts.Insert(110)
-	bts.Insert(130)
+	bst.Insert(100)
+	bst.Insert(90)
+	bst.Insert(80)
+	bst.Insert(95)
+	bst.Insert(120)
+	bst.Insert(110)
+	bst.Insert(130)
 
 	vals := []int{}
 	expectedVals := []int{
@@ -140,7 +140,7 @@ func TestBinarySearchTreeLNR(t *testing.T) {
 		130,
 	}
 
-	BinarySearchTreeLNR(bts, func(v int) bool {
+	BinarySearchTreeLNR(bst, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
@@ -157,7 +157,7 @@ func TestBinarySearchTreeLNR(t *testing.T) {
 		95,
 	}
 
-	BinarySearchTreeLNR(bts, func(v int) bool {
+	BinarySearchTreeLNR(bst, func(v int) bool {
 		if v == 100 {
 			return false
 		}
@@ -174,15 +174,15 @@ func TestBinarySearchTreeLNR(t *testing.T) {
 }
 
 func TestBinarySearchTreeLRN(t *testing.T) {
-	bts := binarysearchtree.New[int]()
+	bst := binarysearchtree.New[int]()
 
-	bts.Insert(100)
-	bts.Insert(90)
-	bts.Insert(80)
-	bts.Insert(95)
-	bts.Insert(120)
-	bts.Insert(110)
-	bts.Insert(130)
+	bst.Insert(100)
+	bst.Insert(90)
+	bst.Insert(80)
+	bst.Insert(95)
+	bst.Insert(120)
+	bst.Insert(110)
+	bst.Insert(130)
 
 	vals := []int{}
 	expectedVals := []int{
@@ -195,7 +195,7 @@ func TestBinarySearchTreeLRN(t *testing.T) {
 		100,
 	}
 
-	BinarySearchTreeLRN(bts, func(v int) bool {
+	BinarySearchTreeLRN(bst, func(v int) bool {
 		vals = append(vals, v)
 
 		return true
@@ -212,7 +212,7 @@ func TestBinarySearchTreeLRN(t *testing.T) {
 		90,
 	}
 
-	BinarySearchTreeLRN(bts, func(v int) bool {
+	BinarySearchTreeLRN(bst, func(v int) bool {
 		if v == 110 {
 			return false
 		}

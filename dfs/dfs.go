@@ -7,12 +7,12 @@ import (
 )
 
 // BinarySearchTreeNLR performs a traverse using the depth-first search algorithm with a pre-order strategy in a binary search tree of an ordered type T.
-func BinarySearchTreeNLR[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
-	if bts.Size() == 0 {
+func BinarySearchTreeNLR[T constraints.Ordered](bst *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
+	if bst.Size() == 0 {
 		return
 	}
 
-	binarySearchTreeNLRRecursive(bts.Root(), cb)
+	binarySearchTreeNLRRecursive(bst.Root(), cb)
 }
 
 func binarySearchTreeNLRRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
@@ -46,12 +46,12 @@ func binarySearchTreeNLRRecursive[T constraints.Ordered](n *binarysearchtree.Nod
 }
 
 // BinarySearchTreeLNR performs a traverse using the depth-first search algorithm with an in-order strategy in a binary search tree of an ordered type T.
-func BinarySearchTreeLNR[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
-	if bts.Size() == 0 {
+func BinarySearchTreeLNR[T constraints.Ordered](bst *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
+	if bst.Size() == 0 {
 		return
 	}
 
-	binarySearchTreeLNRRecursive(bts.Root(), cb)
+	binarySearchTreeLNRRecursive(bst.Root(), cb)
 }
 
 func binarySearchTreeLNRRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
@@ -85,12 +85,12 @@ func binarySearchTreeLNRRecursive[T constraints.Ordered](n *binarysearchtree.Nod
 }
 
 // BinarySearchTreeRNL performs a traverse using the depth-first search algorithm with an out-order strategy in a binary search tree of an ordered type T.
-func BinarySearchTreeRNL[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
-	if bts.Size() == 0 {
+func BinarySearchTreeRNL[T constraints.Ordered](bst *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
+	if bst.Size() == 0 {
 		return
 	}
 
-	binarySearchTreeRNLRecursive(bts.Root(), cb)
+	binarySearchTreeRNLRecursive(bst.Root(), cb)
 }
 
 func binarySearchTreeRNLRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
@@ -124,12 +124,12 @@ func binarySearchTreeRNLRecursive[T constraints.Ordered](n *binarysearchtree.Nod
 }
 
 // BinarySearchTreeLRN performs a traverse using the depth-first search algorithm with a post-order strategy in a binary search tree of an ordered type T.
-func BinarySearchTreeLRN[T constraints.Ordered](bts *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
-	if bts.Size() == 0 {
+func BinarySearchTreeLRN[T constraints.Ordered](bst *binarysearchtree.BinarySearchTree[T], cb func(v T) bool) {
+	if bst.Size() == 0 {
 		return
 	}
 
-	binarySearchTreeLRNRecursive(bts.Root(), cb)
+	binarySearchTreeLRNRecursive(bst.Root(), cb)
 }
 
 func binarySearchTreeLRNRecursive[T constraints.Ordered](n *binarysearchtree.Node[T], cb func(v T) bool) bool {
