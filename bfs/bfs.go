@@ -20,12 +20,9 @@ func Graph[T comparable](g *graph.Graph[T], startVertex T, cb func(v T) bool) {
 
 	for q.Size() != 0 {
 		v, _ := q.Peek()
-
 		q.Dequeue()
 
-		r := cb(v)
-
-		if !r {
+		if !cb(v) {
 			break
 		}
 
