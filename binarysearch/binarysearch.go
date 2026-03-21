@@ -4,25 +4,24 @@ package binarysearch
 import "golang.org/x/exp/constraints"
 
 // Exec finds a value in a slice of a comparable type T sorted in increasing order using the binary search algorithm.
-func Exec[T constraints.Ordered](s []T, value T) (index int, found bool) {
-	var start, end int
-	halfIndex := len(s) / 2
+func Exec[T constraints.Ordered](s []T, value T) int {
+	var (
+		left  int
+		right = len(s)
+	)
 
-	for halfIndex < len(s) {
-		half := s[halfIndex]
+	for left < right {
+		i := left + (right-left)/2
 
-		if value > half {
-			start = halfIndex + 1
-			end = len(s)
-		} else if value < half {
-			start = 0
-			end = halfIndex
-		} else {
-			return halfIndex, true
+		switch {
+		case s[i] < value:
+			left = i + 1
+		case s[i] > value:
+			right = i
+		default:
+			return i
 		}
-
-		halfIndex = ((end - start) / 2) + start
 	}
 
-	return 0, false
+	return -1
 }
